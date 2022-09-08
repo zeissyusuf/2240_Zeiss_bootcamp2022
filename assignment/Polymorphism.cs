@@ -4,7 +4,7 @@ namespace ConsoleApp16
     class TataCar
     {
         //Dependency
-        RevtronEngine engine=new RevtronEngine(); //composition
+        RevtronEngine _engine=new RevtronEngine(); //composition
         public void Ignite() {
         _engine.Start();
         }
@@ -12,7 +12,12 @@ namespace ConsoleApp16
             _engine.Stop();
         }
     }
-    class RevtronEngine
+    public class BaseClass
+    {
+        void start{};
+        void stop{};
+    }
+    class RevtronEngine:BaseClass
     {
         public void Start() { }
         public void Stop() { }
