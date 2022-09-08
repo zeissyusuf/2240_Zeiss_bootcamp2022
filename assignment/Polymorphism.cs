@@ -1,45 +1,49 @@
 namespace ConsoleApp16
 {
+    class Engine
+    {
+        public void Start(){}
+        public void Stop(){}
+    }
 
     class TataCar
     {
+        Engine _engine;
+        TataCar(Engine eng){ _engine=eng;}
         //Dependency
-        RevtronEngine _engine=new RevtronEngine(); //composition
+        
         public void Ignite() {
-        _engine.Start();
+           _engine.Start();
         }
         public void Halt() {
             _engine.Stop();
         }
     }
-    public class BaseClass
-    {
-        void start{};
-        void stop{};
-    }
-    class RevtronEngine:BaseClass
+    class RevtronEngine:Engine
     {
         public void Start() { }
         public void Stop() { }
     }
-    class VericoreEngine
+    class VericoreEngine:Engine
     {
-
+       public void Start() { Consone.WriteLine("VericoreEngine Start")}
+        public void Stop() { Consone.WriteLine("VericoreEngine Stop")}
     }
-    class KrytoechEngine
+    class KrytoechEngine:Engine
     {
+     public void Start() { Consone.WriteLine("KrytoechEngine Start")}
+        public void Stop() { Consone.WriteLine("KrytoechEngine Stop")}
 
     }
     internal class Program
     {
         static void Main(string[] args)
         {
-            TataCar _nexon = new TataCar();
-            _nexon.Ignite();
+            TataCar _nexon = new TataCar(RevtronEngine);
 
-            TataCar _harrier = new TataCar(); //Kryotech engine
+            TataCar _harrier = new TataCar(KrytoechEngine); //Kryotech engine
 
-            TataCar _hexa = new TataCar();//vericore engine
+            TataCar _hexa = new TataCar(VericoreEngine);//vericore engine
 
             FamilyOccassion _family = new FamilyOccassion();
             Parent _parentInstance = new Parent();
