@@ -1,7 +1,7 @@
 namespace ConsoleApp16
 {
 
-    class Car
+    class TataCar
     {
         //Dependency
         RevtronEngine engine=new RevtronEngine(); //composition
